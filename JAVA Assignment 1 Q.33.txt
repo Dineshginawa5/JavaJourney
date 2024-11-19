@@ -1,0 +1,39 @@
+﻿33. Write a class, Commission, which has an instance variable, sales; an appropriate constructor; and a method, commission() that returns the commission. Now write a demo class to test the Commission class by reading a sale from the user, using it to create a Commission object after validating that the value is not negative. Finally, call the commission() method to get and print the commission. If the sales are negative, your demo should print the message "Invalid Input".
+
+import java.util.Scanner;
+
+class Commission {
+    private double sales;
+
+    public Commission(double sales) {
+        this.sales = sales;
+    }
+
+    public double commission() {
+        if (sales < 0) {
+            return 0; // Or you can throw an exception here
+        }
+        // Calculate commission based on your specific rules
+        // For example, you might have a fixed rate or a percentage-based commission
+        return sales * 0.10; // 10% commission as an example
+    }
+}
+
+public class DemoCommission {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the sales amount: ");
+        double salesAmount = scanner.nextDouble();
+
+        if (salesAmount < 0) {
+            System.out.println("Invalid Input");
+        } else {
+            Commission commission = new Commission(salesAmount);
+            double commissionAmount = commission.commission();
+            System.out.println("Commission: " + commissionAmount);
+        }
+
+        scanner.close();
+    }
+}

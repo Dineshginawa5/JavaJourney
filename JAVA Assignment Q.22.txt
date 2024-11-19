@@ -1,0 +1,31 @@
+﻿22. Write a java program to create an custom Exception that would handle at least 2 kind of Arithmetic Exceptions while calculating a given equation
+class MyArithmeticException extends ArithmeticException {
+    public MyArithmeticException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        int num1 = 10, num2 = 0;
+
+        try {
+            // Division by zero
+            int result = num1 / num2;
+            System.out.println("Result: " + result);
+
+            // Negative square root
+            double sqrt = Math.sqrt(-16);
+            System.out.println("Square root: " + sqrt);
+        } catch (ArithmeticException e) {
+            if (e.getMessage().equals("/ by zero")) {
+                throw new MyArithmeticException("Division by zero is not allowed.");
+            } else {
+                throw new MyArithmeticException("Negative square root is not allowed.");
+            }
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+}
+

@@ -1,0 +1,24 @@
+﻿2. Write a Java program to show 0-arguments constructor
+class MyClass {
+    int x;
+    String y;
+
+    // 0-argument constructor
+    MyClass() {
+        x = 10;
+        y = "Hello";
+    }
+
+    void display() {
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.display();
+    }
+}
+

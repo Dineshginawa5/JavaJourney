@@ -1,0 +1,42 @@
+﻿4. Write a Java program to show constructor overloading.
+class Box {
+    int width, height, depth;
+
+    // Constructor with no argument
+    Box() {
+        width = height = depth = 0;
+    }
+
+    // Constructor with one argument
+    Box(int len) {
+        width = height = depth = len;
+    }
+
+    // Constructor with three arguments
+    Box(int w, int h, int d) {
+        width = w;
+        height = h;
+        depth = d;
+    }
+
+    // method to calculate and print volume
+    void volume() {
+        System.out.println("Volume: " + width * height * depth);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // create boxes of different dimensions
+        Box box1 = new Box();
+        Box box2 = new Box(10);
+        Box box3 = new Box(10, 20, 30);
+
+        // print volume of each box
+        box1.volume();
+        box2.volume();
+        box3.volume();
+    }
+}
+
+

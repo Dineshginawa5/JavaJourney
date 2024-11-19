@@ -1,0 +1,30 @@
+﻿
+17. Write program, which finds the sum of numbers formed by consecutive digits.
+
+Input: 2415
+
+output: 24+41+15=80.
+
+import java.util.Scanner;
+
+public class SumOfConsecutiveDigits {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        scanner.close();
+
+        int sum = 0;
+        while (number > 0) {
+            int lastDigit = number % 10;
+            number /= 10;
+            int nextDigit = number % 10;
+            sum += lastDigit * 10 + nextDigit;
+        }
+
+        System.out.println("Sum of numbers formed by consecutive digits: " + sum);
+    }
+}
+
+
+

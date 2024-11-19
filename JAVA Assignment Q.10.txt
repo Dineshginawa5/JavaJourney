@@ -1,0 +1,77 @@
+﻿10. Write a program to create a class named Vehicle having protected instance variables
+
+regnNumber, speed, color, ownerName and a method showData() to show "This is a
+
+vehicle class". Inherit the Vehicle class into subclasses named Bus and Car having
+
+individual private instance variables route Number in Bus and manufacturer Name in Car and both of them having showData() method showing all details of Bus and Car respectively with content of the super class's show Data() method.
+
+class Vehicle {
+    protected String regNumber;
+    protected int speed;
+    protected String color;
+    protected String ownerName;
+
+    public Vehicle(String regNumber, int speed, String color, String ownerName) {
+        this.regNumber = regNumber;
+        this.speed = speed;
+        this.color = color;
+        this.ownerName = ownerName;
+    }
+
+    public void showData() {
+        System.out.println("This is a vehicle class.");
+    }
+}
+
+class Bus extends Vehicle {
+    private int routeNumber;
+
+    public Bus(String regNumber, int speed, String color, String ownerName, int routeNumber) {
+        super(regNumber, speed, color, ownerName);
+        this.routeNumber = routeNumber;
+    }
+
+    @Override
+    public void showData() {
+        super.showData();
+        System.out.println("Bus Details:");
+        System.out.println("Registration Number: " + regNumber);
+        System.out.println("Speed: " + speed);
+        System.out.println("Color: " + color);
+        System.out.println("Owner Name: " + ownerName);
+        System.out.println("Route Number: " + routeNumber);
+    }
+}
+
+class Car extends Vehicle {
+    private String manufacturerName;
+
+    public Car(String regNumber, int speed, String color, String ownerName, String manufacturerName) {
+        super(regNumber, speed, color, ownerName);
+        this.manufacturerName = manufacturerName;
+    }
+
+    @Override
+    public void showData() {
+        super.showData();
+        System.out.println("Car Details:");
+        System.out.println("Registration Number: " + regNumber);
+        System.out.println("Speed: " + speed);
+        System.out.println("Color: " + color);
+        System.out.println("Owner Name: " + ownerName);
+        System.out.println("Manufacturer Name: " + manufacturerName);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bus bus = new Bus("MH-12-AB-1234", 80, "Red", "ABC Transport", 101);
+        Car car = new Car("MH-12-CD-5678", 120, "Black", "XYZ Motors", "Maruti Suzuki");
+
+        bus.showData();
+        System.out.println();
+        car.showData();
+    }
+}
+

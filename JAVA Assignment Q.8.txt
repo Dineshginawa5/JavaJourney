@@ -1,0 +1,23 @@
+﻿8. Write a Java program to show method hiding.
+class Parent {
+    void display() {
+        System.out.println("Parent class display method");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        System.out.println("Child class display method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.display();
+
+        Parent parent = child; // Upcasting
+        parent.display();
+    }
+}
+

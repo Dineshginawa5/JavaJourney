@@ -1,0 +1,37 @@
+﻿21. Write a program that outputs the name of the capital of the country entered at the command line. The program should throw a "NoMatchFoundException" when it fails to print the capital of the country entered at the command line.
+import java.util.HashMap;
+import java.util.Map;
+
+class NoMatchFoundException extends Exception {
+    public NoMatchFoundException(String message) {
+        super(message);
+    }
+}
+
+public class CapitalFinder {
+    public static void main(String[] args) {
+        Map<String, String> countryCapitals = new HashMap<>();
+        countryCapitals.put("India", "New Delhi");
+        countryCapitals.put("USA", "Washington D.C.");
+        countryCapitals.put("France", "Paris");
+
+        if (args.length == 0) {
+            System.out.println("Please provide a country name as a command-line argument.");
+            return;
+        }
+
+        String country = args[0];
+        String capital = countryCapitals.get(country);
+
+        try {
+            if (capital == null) {
+                throw new NoMatchFoundException("No capital found for the country: " + country);
+            }
+            System.out.println("Capital of " + country + " is " + capital);
+        } catch (NoMatchFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+

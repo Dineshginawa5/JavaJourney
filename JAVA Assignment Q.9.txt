@@ -1,0 +1,131 @@
+﻿9. Create a general class ThreeDObject and derive the classes Box, Cube, Cylinder and Cone from it. The class ThreeDObject has methods whole Surface Area () and volume (). Override these two methods in each of the derived classes to calculate the volume and whole surface area of each type of three-dimensional objects. The dimensions of the objects are to be taken from the users and passed through the respective constructors of each derived class. Write a main method to test these classes.
+import java.util.Scanner;
+
+class ThreeDObject {
+    protected double length, width, height, radius;
+
+    public ThreeDObject() {
+        // Default constructor
+    }
+
+    public ThreeDObject(double length, double width, double height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+
+    public ThreeDObject(double radius, double height) {
+        this.radius = radius;
+        this.height = height;
+    }
+
+    public double wholeSurfaceArea() {
+        return 0.0; // To be overridden by subclasses
+    }
+
+    public double volume() {
+        return 0.0; // To be overridden by subclasses
+    }
+}
+
+class Box extends ThreeDObject {
+    public Box(double length, double width, double height) {
+        super(length, width, height);
+    }
+
+    @Override
+    public double wholeSurfaceArea() {
+        return 2 * (length * width + width * height + height * length);
+    }
+
+    @Override
+    public double volume() {
+        return length * width * height;
+    }
+}
+
+class Cube extends Box {
+    public Cube(double side) {
+        super(side, side, side);
+    }
+}
+
+class Cylinder extends ThreeDObject {
+    public Cylinder(double radius, double height) {
+        super(radius, height);
+    }
+
+    @Override
+    public double wholeSurfaceArea() {
+        return 2 * Math.PI * radius * (radius + height);
+    }
+
+    @Override
+    public double volume() {
+        return Math.PI * radius * radius * height;
+    }
+}
+
+class Cone extends ThreeDObject {
+    public Cone(double radius, double height) {
+        super(radius, height);
+    }
+
+    @Override
+    public double wholeSurfaceArea() {
+        double slantHeight = Math.sqrt(radius * radius + height * height);
+        return Math.PI * radius * (radius + slantHeight);
+    }
+
+    @Override
+    public double volume() {
+        return (1.0 / 3.0) * Math.PI * radius * radius * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter length, width, and height of the box: ");
+        double boxLength = scanner.nextDouble();
+        double boxWidth = scanner.nextDouble();
+        double boxHeight = scanner.nextDouble();
+
+        System.out.print("Enter side of the cube: ");
+        double cubeSide = scanner.nextDouble();
+
+        System.out.print("Enter radius and height of the cylinder: ");
+        double cylinderRadius = scanner.nextDouble();
+        double cylinderHeight = scanner.nextDouble();
+
+        System.out.print("Enter radius and height of the cone: ");
+        double coneRadius = scanner.nextDouble();
+        double coneHeight = scanner.nextDouble();
+
+        Box box = new Box(boxLength, boxWidth, boxHeight);
+        Cube cube = new Cube(cubeSide);
+        Cylinder cylinder = new Cylinder(cylinderRadius, cylinderHeight);
+        Cone cone = new Cone(coneRadius, coneHeight);
+
+        System.out.println("\nBox:");
+        System.out.println("Surface area: " + box.wholeSurfaceArea());
+        System.out.println("Volume: " + box.volume());
+
+        System.out.println("\nCube:");
+        System.out.println("Surface area: " + cube.wholeSurfaceArea());
+        System.out.println("Volume: " + cube.volume());
+
+        System.out.println("\nCylinder:");
+        System.out.println("Surface area: " + cylinder.wholeSurfaceArea());
+        System.out.println("Volume: " + cylinder.volume());
+
+        System.out.println("\nCone:");
+        System.out.println("Surface area: " + cone.wholeSurfaceArea());
+        System.out.println("Volume: " + cone.volume());
+
+        scanner.close();
+    }
+}
+
+

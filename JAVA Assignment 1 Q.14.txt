@@ -1,0 +1,25 @@
+﻿14. Write a Java program to print all multiple of 10 between a given interval
+import java.util.Scanner;
+
+public class MultiplesOf10 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the lower limit: ");
+        int lowerLimit = scanner.nextInt();
+
+        System.out.print("Enter the upper limit: ");
+        int upperLimit = scanner.nextInt();
+
+        System.out.println("Multiples of 10 between " + lowerLimit + " and " + upperLimit + ":");
+
+        for (int i = lowerLimit; i <= upperLimit; i++) {
+            if (i % 10 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        scanner.close();
+    }
+}
+

@@ -1,0 +1,46 @@
+﻿23. Create two user-defined exceptions named "TooHot" and "TooCold" to check the temperature (in Celsius) given by the user passed through the command line is too hot or too cold.
+
+If temperature 35, throw exception "TooHot"..
+
+If temperature <5, throw exception "TooCold".
+
+Otherwise, print "Normal" and convert it to Farenheit.
+
+public class TemperatureException {
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Please provide a temperature in Celsius as a command-line argument.");
+            return;
+        }
+
+        try {
+            int celsius = Integer.parseInt(args[0]);
+
+            if (celsius > 35) {
+                throw new TooHotException("Temperature is too hot!");
+            } else if (celsius < 5) {
+                throw new TooColdException("Temperature is too cold!");
+            } else {
+                double fahrenheit = (celsius * 9 / 5) + 32;
+                System.out.println("Temperature in Fahrenheit: " + fahrenheit);
+            }
+        } catch (TooHotException | TooColdException e) {
+            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer temperature.");
+        }
+    }
+}
+
+class TooHotException extends Exception {
+    public TooHotException(String message) {
+        super(message);
+    }
+}
+
+class TooColdException extends Exception {
+    public TooColdException(String message) {
+        super(message);
+    }
+}
+

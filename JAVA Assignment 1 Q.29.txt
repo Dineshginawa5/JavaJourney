@@ -1,0 +1,38 @@
+﻿29. Write a Java program to find duplicate elements in a ID array and find their frequency of occurrence.
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class DuplicateElements {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        int[] ids = new int[n];
+
+        System.out.println("Enter the IDs:");
+        for (int i = 0; i < n; i++) {
+            ids[i] = scanner.nextInt();
+        }
+
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int id : ids) {
+            frequencyMap.put(id, frequencyMap.getOrDefault(id, 0) + 1);
+        }
+
+        System.out.println("Duplicate elements and their frequencies:");
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+

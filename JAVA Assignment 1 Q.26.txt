@@ -1,0 +1,69 @@
+﻿26. Write a Java program to implement Queue using array.
+public class QueueArray {
+    private int[] queue;
+    private int front;
+    private int rear;
+    private int capacity;
+
+    public QueueArray(int capacity) {
+        this.capacity = capacity;
+        queue = new int[capacity];
+        front = rear = -1;
+    }
+
+    public void enqueue(int item) {
+        if (isFull()) {
+            System.out.println("Queue is full");
+            return;
+        }
+        if (isEmpty()) {
+            front = rear = 0;
+        } else {
+            rear = (rear + 1) % capacity;
+        }
+        queue[rear] = item;
+        System.out.println(item + " enqueued to queue");
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        int item = queue[front];
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % capacity;
+        }
+        return item;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        return queue[front];
+    }
+
+    public boolean isEmpty() {
+        return front == -1;
+    }
+
+    public boolean isFull() {
+        return (rear + 1) % capacity == front;
+    }
+
+    public static void main(String[] args) {
+        QueueArray queue = new QueueArray(100);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+
+        System.out.println(queue.dequeue() + " dequeued from queue");
+
+        System.out.println("Front element is " + queue.peek());
+    }
+}
+

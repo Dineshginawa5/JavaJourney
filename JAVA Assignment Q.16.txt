@@ -1,0 +1,27 @@
+﻿16. Write a program to demonstrate use of 'static" keyword..
+class MyClass {
+    static int staticVariable = 0; // Static variable, shared by all instances
+
+    int instanceVariable;
+
+    public MyClass(int instanceVariable) {
+        this.instanceVariable = instanceVariable;
+        MyClass.staticVariable++;
+    }
+
+    public void display() {
+        System.out.println("Instance variable: " + instanceVariable);
+        System.out.println("Static variable: " + MyClass.staticVariable);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj1 = new MyClass(10);
+        MyClass obj2 = new MyClass(20);
+
+        obj1.display();
+        obj2.display();
+    }
+}
+

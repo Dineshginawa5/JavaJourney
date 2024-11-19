@@ -1,0 +1,50 @@
+﻿14. Write a program to define a class Employee to accept emp_id, emp_name, basic_salary
+
+from the user and display the gross_salary.
+import java.util.Scanner;
+
+class Employee {
+    private int empId;
+    private String empName;
+    private double basicSalary;
+
+    public Employee(int empId, String empName, double basicSalary) {
+        this.empId = empId;
+        this.empName = empName;
+        this.basicSalary = basicSalary;
+    }
+
+    public double calculateGrossSalary() {
+        double da = 0.4 * basicSalary;
+        double hra = 0.2 * basicSalary;
+        return basicSalary + da + hra;
+    }
+
+    public void displayDetails() {
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Basic Salary: " + basicSalary);
+        System.out.println("Gross Salary: " + calculateGrossSalary());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Employee ID: ");
+        int empId = scanner.nextInt();
+
+        System.out.print("Enter Employee Name: ");
+        String empName = scanner.next();
+
+        System.out.print("Enter Basic Salary: ");
+        double basicSalary = scanner.nextDouble();
+
+        Employee employee = new Employee(empId, empName, basicSalary);
+        employee.displayDetails();
+
+        scanner.close();
+    }
+}
+

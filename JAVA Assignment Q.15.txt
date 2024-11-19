@@ -1,0 +1,33 @@
+﻿
+15. Write a program to demonstrate use of 'this' keyword.
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void greet() {
+        System.out.println("Hello, my name is " + this.name + " and I am " + this.age + " years old.");
+    }
+
+    public void introduceSelf(Person otherPerson) {
+        System.out.println("Hi " + otherPerson.name + ", I'm " + this.name + ". Nice to meet you!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person1 = new Person("Alice", 30);
+        Person person2 = new Person("Bob", 25);
+
+        person1.greet();
+        person2.greet();
+
+        person1.introduceSelf(person2);
+        person2.introduceSelf(person1);
+    }
+}
+
